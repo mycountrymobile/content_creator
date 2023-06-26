@@ -1,4 +1,4 @@
-pip install langchain
+
 # Import dependencies
 import os 
 from apikey import apikey 
