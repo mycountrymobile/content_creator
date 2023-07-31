@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<body class="{{background}}">
+    <div class="row mt-4 pt-2">
+        <div class="col-12 ms-5 ps-4">
+            <h1>Update Partner Information</h1>
+            <p class="text-muted ps-1 mt-2"> Fill in the information to add or update a new partner in the company.
+                Make sure to double-check all information<br> entered and fill in offered destinations field.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form class="form-group ms-5 p-4 bg-white round shadow-lg" method="POST" novalidate>
+                {{ form.csrf_token }}
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label">Partner Name</label>
+                        {% if form.name.errors %}
+                            {{ form.name(class="form-control is-invalid")}}
+                            <div class="invalid-feedback mb-2">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="form-control mb-3")}}
+                        {% endif %}
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label"> Email ID</label>
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control is-invalid")}}
+                            <div class="invalid-feedback mb-2">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control mb-3")}}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-label">Relation</label>
+                        {% if form.relation.errors %}
+                            {{ form.relation(class="form-control is-invalid")}}
+                            <div class="invalid-feedback mb-1">
+                                {% for error in form.relation.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.relation(class="form-control mb-3")}}
+                        {% endif %}
+                    </div>
+                    <div class="col-8">
+                        <label class="form-label"> Skype ID</label>
+                        {% if form.skype.errors %}
+                            {{ form.skype(class="form-control is-invalid")}}
+                            <div class="invalid-feedback mb-1">
+                                {% for error in form.skype.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.skype(class="form-control mb-3")}}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label"> {{form.destinations.label}}</label>
+                        {% if form.destinations.errors %}
+                            {{ form.destinations(class="form-control is-invalid")}}
+                            <div class="invalid-feedback mb-2">
+                                {% for error in form.destinations.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.destinations(class="form-control mb-3")}}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input class="btn w-100 {{button}}" id="submit" name="submit" type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
